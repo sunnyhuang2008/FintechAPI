@@ -1,0 +1,32 @@
+{
+  "name": "fintechapi",
+  "version": "1.0.0",
+  "description": "RESTful fintechapi that provides essential portfolio information and market data. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunnyhuang2008/FintechAPI.git"
+  },
+  "keywords": [
+    "fintech",
+    "portfolio",
+    "market",
+    "equities"
+  ],
+  "author": "Sunny Huang, Jason Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sunnyhuang2008/FintechAPI/issues"
+  },
+  "homepage": "https://github.com/sunnyhuang2008/FintechAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9",
+    "request": "^2.81.0"
+  }
+}
