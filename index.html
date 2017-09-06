@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body ng-app="directoryApp" >
+    <div id = "web-background" class="container">
+      <div id = "title" class="row">
+        <h1 id = "inner-title">UF Directory App</h1>
+      </div>
+      <div class="row" ng-controller="ListingsController" ng-init = "showDetails(listings[0])">
+        <div class="col-md-6">
+          <div class="input-group" id="searchBar">
+            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" placeholder="Search" ng-model="phrase" >             
+          </div>
+          <div class="tableWrapper">
+            <table id = "table" class="table table-striped table-hover">
+              <tr>
+                <th>Code</th>
+                <th>Building Name</th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="listing in listings | filter : phrase" ng-click="showDetails(listing)">
+                  <th>{{listing.code}}</th>
+                  <th>{{listing.name}}</th>
+                  <th><button ng-click="deleteListing(listing)" class="btn btn-danger btn-sm">
+                  	<span class="glyphicon glyphicon-remove"></span>
+                  </button></th> 
+                </tr>
+            </table>
+          </div>
+        </div>
+        <div   class="col-md-6">
+          <div id = "details" class="jumbotron" ng-controller="ListingsController">
+            <h2><b color = #ffffff>Detailed Information</b></h2>
+              <p color = #e1e8f7> {{detailedInfo.name}}<p>
+              <p> {{detailedInfo.address}}</p>
+              <p>Longnitude: {{detailedInfo.coordinates.longitude}}</p>
+              <p>Latitude: {{detailedInfo.coordinates.latitude}}</p>
+          </div>
+        </div>
+          <div class="col-md-6">
+              <div id = "add-list" class="jumbotron" >
+
+              <h2><b>Add Places</b></h2>
+              <div class = "form-group">
+              <lable for "name"> Name : </lable>
+              <input type = "text" id ="addP0" type="text" class="form-control" placeholder="Name" ng-model="name" required>
+              </div>
+
+              <div class = "form-group">
+              <lable for "code"> Code : </lable>
+              <input id ="addP1" type="text" class="form-control" placeholder="Code" ng-model="code" required>
+              </div>
+
+              <div class = "form-group">
+              <lable for "longitude"> Longitude : </lable>
+              <input id ="addP2" type="text" class="form-control" placeholder="Longitude" ng-model="long" required>
+              </div>
+
+              <div class = "form-group">
+              <lable for "latitude"> Latitude : </lable>
+              <input id ="addP3" type="text" class="form-control" placeholder="Latitude" ng-model="lat" required>
+              </div>
+
+              <div class = "form-group">
+              <lable for "address"> Address : </lable>
+              <input id ="addP4" type="text" class="form-control" placeholder="Address" ng-model="address" required>
+              </div>
+
+              <p> <button class = "btn btn-primary" ng-click="addListing(name,code,long,lat,address); clearText()">ADD</button></p>
+              </div>
+          </div>
+      </div> 
+    </div>
+
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="listingController.js"></script>
+    <script src="listingFactory.js"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+#searchBar {
+  margin: 15px 10px;
+  width: 547px !important;
+}
+
+.tableWrapper {
+  height: 885px;
+  overflow: auto;
+   border-radius: 25px 1px 25px 25px;
+   font-family: 'Encode Sans Semi Condensed', sans-serif;
+   background-color:  #BED0D0!important;
+
+}
+
+tr:nth-child(odd){
+	background : #DAEEFE !important;
+}
+
+tr:nth-child(even){
+	background: #6DBAB3 !important;
+}
+
+tr:hover{
+	background-color: #F1FFFF !important;
+}
+
+#title{
+	 margin: 0 auto !important;
+	 font-family: 'Encode Sans Semi Condensed', sans-serif;
+}
+
+#inner-title{
+	margin-left: auto !important;
+	width: 700px !important;
+	color: #1B444F !important;
+}
+
+#details{
+	background-color : #BED0D0!important;
+
+	height: 370px !important;
+	 font-family: 'Encode Sans Semi Condensed', sans-serif;
+}
+
+#web-background{
+	background-color : #81D8D0 !important;
+}
+
+#add-list{
+	background-color: #A8B1B8 !important;
+	 font-family: 'Encode Sans Semi Condensed', sans-serif;
+}
