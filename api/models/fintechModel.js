@@ -3,7 +3,7 @@ Schema = mongoose.Schema;
 
 var optimization = new Schema({
 	covarianceMatrix : [
-		covarPair : {
+	   {
 			ticker1 : String,
 			ticker2 : String,
 			volatility1 : Number,
@@ -13,7 +13,7 @@ var optimization = new Schema({
 		}
 	],
 	weights : [
-		weight : {
+	    {
 			ticker : String, 
 			weight : Number
 		}
@@ -39,7 +39,7 @@ var alterOptimization = new Schema({
 	// Entry ID for each optimization object entry
 	optimizationID : String, 
 	holdings : [
-		holding : {
+		{
 			ticker : String, 
 			weight : Number,
 			sector : String 
@@ -58,21 +58,21 @@ alterOptimization.pre('save', function(next){
 var portfolio = new Schema({
 	name : String,
 	marketValue : [
-		valueEntry : {
+	    {
 			value : Number,
 			currency : String, 
 			time : Date
 		}
 	],
 	historicalOptimization : [
-		optimizationID : String
+		{
+			optimizationID : String
+		}
 	]
 // More portfolio meta metrics to be added 
 });
 
 portfolio.pre('save', function(next){
-	var currentTime = new Date;
-	this.marketValue.valueEntry.time = currentTime;
 	next();
 });
 
@@ -82,7 +82,7 @@ var ticker = new Schema({
 });
 
 var optimization = mongoose.model('optimization', optimization);
-var portfolio = mongoose.model('assetValue',portfolio);
+var portfolio = mongoose.model('portfolio',portfolio);
 var alterOptimization = mongoose.model('alterOptimization', alterOptimization);
 var ticker = mongoose.model('ticker', ticker);
 
