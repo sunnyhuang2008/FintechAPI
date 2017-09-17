@@ -6,5 +6,8 @@ module.exports = function(app) {
   app.route('/tickers')
     .get(fintech.list_ticker_price);
 
+  app.route('/testSavePortfolio')
+  .get(fintech.save_portfolio);
+
  
 };
