@@ -1,5 +1,5 @@
 module.exports = {
 	db:{
-		uri : 'mongodb://fintech:Aplit19#@ds139904.mlab.com:39904/fintechapi'
+		uri : 'mongodb://<userName>:<PassWord>@ds139904.mlab.com:39904/fintechapi'
 	}
 };
