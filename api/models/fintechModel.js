@@ -55,6 +55,7 @@ alterOptimization.pre('save', function(next){
 	this.time = currentTime;
 });
 
+/*
 var portfolio = new Schema({
 	name : String,
 	marketValue : [
@@ -72,7 +73,22 @@ var portfolio = new Schema({
 // More portfolio meta metrics to be added 
 });
 
+
 portfolio.pre('save', function(next){
+	next();
+});
+*/
+
+var portfolio_value = new Schema({
+	name : String, 
+	currency : String, 
+	value : Number,
+	time : Date
+});
+
+portfolio_value.pre('save', function(next){
+	var currentTime = new Date; 
+	this.time = currentTime; 
 	next();
 });
 
@@ -82,11 +98,11 @@ var ticker = new Schema({
 });
 
 var optimization = mongoose.model('optimization', optimization);
-var portfolio = mongoose.model('portfolio',portfolio);
+var portfolio_value= mongoose.model('portfolio_value',portfolio_value);
 var alterOptimization = mongoose.model('alterOptimization', alterOptimization);
 var ticker = mongoose.model('ticker', ticker);
 
 module.exports = optimization;
-module.exports = portfolio;
+module.exports = portfolio_value;
 module.exports = alterOptimization;
 module.exports = ticker;
