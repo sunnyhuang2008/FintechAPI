@@ -45,3 +45,55 @@ exports.get_realtime_stock_data = function(req, res) {
     }
   }).end();
 };
+
+function get_stock_data(ticker) {
+  var res = 0;
+  request('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol='+ ticker +'&apikey=04G9FLWCWQG6NRJO', function(err, response, body){
+    if(!err && response.statusCode == 200){
+      var jsonRes = JSON.parse(body);
+      var timeSeries = jsonRes[Object.keys(jsonRes)[1]];
+      var latest = timeSeries[Object.keys(timeSeries)[0]];
+      console.log("test+");
+      res = latest[Object.keys(latest)[3]];      
+    } 
+    // else {
+    //   callback(error);
+    // }
+  }).end();
+  return res;
+}
+
+exports.get_porfolio_sum = function(req, res) {
+  var portfolio = new Map();
+  portfolio.set('BABA', 5);
+  portfolio.set('AAPL', 10);
+
+  var sum = 0;
+  
+  portfolio.forEach(function(value, key){
+    get_stock_data(key)
+    .then(function(result){
+      var stockValue = result * value;
+      console.log("p: " + result + " v: " + key);
+      sum += stockValue;
+    });
+  })
+  .then(function(){
+    console.log("jason");
+    res.json("sum: " + sum);
+  }).end();
+  // for (var [key, value] of portfolio) {
+  //   get_stock_data(key, function(err, result) {
+  //     if(err){
+  //       res.send(500, { error: 'something blew up' });
+  //     } else {
+  //       var stockValue = result * value;
+  //       console.log("p: " + result + " v: " + key);
+  //       sum += stockValue;
+  //     }
+  //   });   
+  // }
+
+  // console.log("jason");
+  // res.json("sum: " + sum);
+}

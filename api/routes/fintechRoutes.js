@@ -10,4 +10,6 @@ module.exports = function(app) {
   .get(fintech.save_portfolio_value);
 
   app.get('/getRealtimeStockData/:ticker',fintech.get_realtime_stock_data);
+
+  app.get('/getPorfolioSum',fintech.get_porfolio_sum);
 };
